@@ -1,0 +1,30 @@
+.Settings {
+    padding-top: 10px;
+}
+
+.Settings img:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+
+    .Settings {
+        margin: 10px 0;
+        padding: 0;
+        display: block;
+        align-items: left;
+    }
+
+    .Settings img{
+        color: white;
+        text-decoration: none;
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    .Settings label:hover {
+        color: darkblue;
+    }
+
+}

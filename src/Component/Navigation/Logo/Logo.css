@@ -1,0 +1,14 @@
+.Logo {
+    background-color: transparent;
+    padding: 5px 10px;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 36px;
+    font-family: 'Indie Flower', cursive;
+}
+
+.Logo label:hover{
+    cursor: pointer;
+}
+
+

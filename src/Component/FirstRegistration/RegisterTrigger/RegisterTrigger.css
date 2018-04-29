@@ -1,0 +1,14 @@
+.RegisterTrigger button {
+    display: block;
+    position: center;
+    height: 60px;
+    width: 350px;
+    font-size: 23px;
+    text-align: center;
+    color: white;
+    background-color: #2D92E6;
+    cursor: pointer;
+    border: 1px solid #2D92E6;
+    outline: none;
+    margin: 10px auto;
+}

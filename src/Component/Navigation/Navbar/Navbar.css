@@ -1,0 +1,20 @@
+.Navbar {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100%;
+    color: white;
+    background-color: #0078D7;
+}
+
+@media (min-width: 500px) {
+    .Navbar {
+        flex-flow: row;
+        border-bottom: 1px solid lightskyblue;
+        height: 50px;
+    }
+}
+

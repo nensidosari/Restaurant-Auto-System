@@ -1,0 +1,49 @@
+.Welcome {
+    text-align: center;
+    color: white;
+    height: 50%;
+    padding: auto;
+}
+
+.Welcome p {
+    font-size: 47px;
+    margin-top: 170px;
+}
+
+.Welcome label {
+    font-size: 25px;
+    font-weight: lighter;
+}
+
+.Input {
+    display: block;
+    align-items: center;
+    margin: 45px auto;
+}
+
+.Input input {
+    height: 60px;
+    width: 250px;
+    font-size: 23px;
+    text-align: center;
+
+}
+
+.Welcome button {
+    height: 60px;
+    width: 250px;
+    font-size: 23px;
+    text-align: center;
+    color: white;
+    background-color: #2D92E6;
+    cursor: pointer;
+    border: 1px solid #2D92E6;
+    outline: none;
+    padding: auto;
+}
+
+.Welcome button:hover {
+    background-color: #00508A;
+    border: 1px solid #00508A;
+}
+

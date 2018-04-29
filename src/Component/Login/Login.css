@@ -1,0 +1,45 @@
+.Login {
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+    font-size: 54px;
+}
+
+.Login .DivLogin {
+    width: 470px;
+    height: 350px;
+    background-color: white;
+    box-shadow: #0078D7;
+    border: 5px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+
+.DivLogin input, button {
+    display: flex;
+    margin: 25px auto;
+    height: 55px;
+    width: 350px;
+    font-size: 18px;
+}
+
+
+
+.Login button {
+    margin: 25px auto;
+    height: 60px;
+    width: 350px;
+    font-size: 23px;
+    text-align: center;
+    color: white;
+    background-color: #2D92E6;
+    cursor: pointer;
+    border: 1px solid #2D92E6;
+    outline: none;
+}
+
+.Login button:hover {
+    background-color: #00508A;
+    border: 1px solid #00508A;
+}

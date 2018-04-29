@@ -1,0 +1,79 @@
+.BusinessRegistration {
+    text-align: center;
+    color: white;
+}
+
+.BusinessRegistration p {
+    font-size: 54px;
+    margin-top: 110px;
+}
+
+.BusinessRegistration .InputDiv {
+    padding-top: 25px;
+    padding-bottom: 40px;
+    background-color: #2D92E6;
+    height: 270px;
+    width: 800px;
+    margin: 0 auto;
+
+}
+
+.BusinessRegistration .InputDiv div {
+    margin: 0 20px;
+    display: inline-block;
+    height: 180px;
+}
+
+.BusinessRegistration input {
+    height: 60px;
+    width: 250px;
+    font-size: 23px;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.InputDiv .CustomFileUpload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+    height: 65px;
+    width: 250px;
+    font-size: 23px;
+    text-align: center;
+    background-color: white;
+    color: #7E7365;
+    border: 1px solid white;
+}
+
+.InputDiv .CustomFileUpload:hover {
+    background-color: #00508A;
+    color: white;
+    border: 1px solid #00508A;
+}
+
+.BusinessRegistration button {
+    margin-top: 30px;
+    height: 60px;
+    width: 250px;
+    font-size: 23px;
+    text-align: center;
+    color: white;
+    background-color: #2D92E6;
+    cursor: pointer;
+    border: 1px solid #2D92E6;
+    outline: none;
+}
+
+.BusinessRegistration button:hover {
+    background-color: #00508A;
+    border: 1px solid #00508A;
+}
+
+
+

@@ -1,0 +1,46 @@
+.EmpRegisterForm {
+    margin: 10px auto;
+    padding-left: 30px;
+}
+
+.EmpRegisterForm label {
+    display: block;
+    font-size: larger;
+}
+
+.EmpRegisterForm input{
+    height: 30px;
+    width: 280px;
+}
+
+.EmpRegisterForm .RightDiv {
+    margin-top: 20px;
+    float: right;
+    width: 50%;
+    display: inline-block;
+}
+
+.EmpRegisterForm .LeftDiv {
+    margin-top: 20px;
+    width: 50%;
+    display: block;
+    float: left;
+}
+
+.EmpRegisterForm .ButtonCancel {
+    margin-top: 25px;
+    width: 100px;
+    margin-right: 35px;
+    background-color: #dc3545;
+}
+
+.EmpRegisterForm .ButtonCancel:hover{
+    border: #dc3545;
+    outline-color: #dc3545;
+}
+
+.EmpRegisterForm .ButtonRegister {
+    margin-top: 25px;
+    width: 100px;
+    margin-right: 35px;
+}

@@ -1,0 +1,22 @@
+.SideNavbar {
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    width: 250px;
+    height: 100%;
+    color: white;
+    border-right: 1px solid lightskyblue;
+    background-color: #2D92E6;
+}
+
+@media (max-width: 500px) {
+    .SideNavbar{
+        margin: 10px 0;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+    }
+
+}

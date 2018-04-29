@@ -1,0 +1,35 @@
+.Panel {
+    background-color: transparent;
+    padding: 5px 10px;
+    margin: auto;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 36px;
+}
+
+.Panel label:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+
+    .Panel {
+        margin: 10px 0;
+        padding: 0;
+        display: block;
+        width: 100%;
+    }
+
+    .Panel label {
+        color: white;
+        font-size: 16px;
+        text-decoration: none;
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    .Panel label:hover {
+        color: darkblue;
+    }
+}

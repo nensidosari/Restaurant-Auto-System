@@ -1,0 +1,11 @@
+.InfoTable  {
+    border-radius: 10px 10px 0 0;
+    border-collapse: collapse;
+    margin-left: 50px;
+}
+
+.InfoTable tbody tr:hover {
+    //background-color: rgba(45, 146, 230, 0.23);
+    background-color: rgba(40, 167, 69, 0.25);
+    cursor: pointer;
+}

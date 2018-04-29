@@ -1,0 +1,30 @@
+.SideNavItem {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+}
+
+.SideNavItem a {
+    height: 60px;
+    font-size: 20px;
+    color: white;
+    padding: 25px 10px 5px 10px;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+.SideNavItem :hover {
+    background-color: #0078D7;
+}
+
+.SideNavItem a:hover,
+.SideNavItem a:active,
+.SideNavItem a.active {
+    background-color: #0078D7;
+    border-top: 1px solid #2D92E6;
+    border-bottom: 4px solid #0064c0;
+    color: white;
+    cursor: pointer;
+}
