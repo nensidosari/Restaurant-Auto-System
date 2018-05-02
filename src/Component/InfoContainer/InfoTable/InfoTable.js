@@ -9,11 +9,11 @@ const infoTable = (props) => {
   return (
   <table className={classes.InfoTable}>
     <thead>
-    <InfoHeader/>
+    <InfoHeader  attributes={props.attributes}/>
     </thead>
     <tbody>
     {props.empData.map(emp => (
-      <InfoRow editEmpClicked={props.editEmpClicked} empData={emp} key={emp.id}/>
+      <InfoRow type={props.type} editClicked={props.editClicked} empData={emp} key={emp.id}/>
     ))}
 
     </tbody>

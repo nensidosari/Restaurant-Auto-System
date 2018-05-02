@@ -2,6 +2,7 @@
     border-radius: 10px 10px 0 0;
     border-collapse: collapse;
     margin-left: 50px;
+    overflow-y: scroll;
 }
 
 .InfoTable tbody tr:hover {
@@ -9,3 +10,8 @@
     background-color: rgba(40, 167, 69, 0.25);
     cursor: pointer;
 }
+
+td {
+    width: auto;
+}
+

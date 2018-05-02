@@ -1,6 +1,8 @@
 import React from 'react';
 
 import classes from './EmpRegisterForm.css';
+import {connect} from "react-redux";
+import * as actionTypes from "../../../store/actions";
 
 const empRegisterForm = (props) => {
 
@@ -15,6 +17,7 @@ const empRegisterForm = (props) => {
       type: this.type.value
     }
 
+    props.onAddEmployee(data);
     props.saveEmployee(data);
   }
 
@@ -61,6 +64,20 @@ const empRegisterForm = (props) => {
       </span>
     </div>
   );
-}
+};
 
-export default empRegisterForm;
+
+const mapStateToProps = state => {
+  return {
+    emp: state.emp.ingredients
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddEmployee: (data) => dispatch({type: actionTypes.ADD_EMPLOYEE, personData: data}),
+    onDeleteEmployee: (id) => dispatch({type: actionTypes.DELETE_EMPLOYEE, resultPrsId: id}),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(empRegisterForm);

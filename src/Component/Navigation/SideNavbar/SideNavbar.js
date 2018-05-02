@@ -5,8 +5,8 @@ import classes from './SideNavbar.css';
 
 const sideNavbar = (props) => (
   <div className={classes.SideNavbar}>
-    <SideNavItem clicked={props.employersClicked} active={props.setActive}>Employees</SideNavItem>
-    <SideNavItem>Suppliers</SideNavItem>
+    <SideNavItem clicked={props.employersClicked} active={props.setActiveEmp}>Employees</SideNavItem>
+    <SideNavItem clicked={props.supplierPanelClicked} active={props.setActiveSupp}>Suppliers</SideNavItem>
     <SideNavItem>Products</SideNavItem>
     <SideNavItem>Inventory</SideNavItem>
     <SideNavItem>Orders</SideNavItem>

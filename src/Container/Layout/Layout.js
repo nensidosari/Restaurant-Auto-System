@@ -16,7 +16,7 @@ class Layout extends Component {
       tableNr: '0'
     },
     login: false,
-    loggedIn: false,
+    loggedIn: true,
     error: null,
     admin: '0'
   }

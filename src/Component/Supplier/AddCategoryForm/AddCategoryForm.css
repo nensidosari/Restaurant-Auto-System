@@ -1,0 +1,40 @@
+.AddCategoryForm {
+    margin: 10px auto;
+    padding-left: 30px;
+}
+
+.AddCategoryForm label {
+    display: block;
+    font-size: larger;
+}
+
+.AddCategoryForm input{
+    height: 30px;
+    width: 500px;
+}
+
+
+.AddCategoryForm .LeftDiv {
+    margin-top: 20px;
+    width: 50%;
+    display: block;
+    position: center;
+}
+
+.AddCategoryForm .ButtonCancel {
+    margin-top: 25px;
+    width: 100px;
+    margin-right: 35px;
+    background-color: #dc3545;
+}
+
+.AddCategoryForm .ButtonCancel:hover{
+    border: #dc3545;
+    outline-color: #dc3545;
+}
+
+.AddCategoryForm .ButtonRegister {
+    margin-top: 25px;
+    width: 100px;
+    margin-right: 35px;
+}

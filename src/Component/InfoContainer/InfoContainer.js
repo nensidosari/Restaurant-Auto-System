@@ -1,25 +1,31 @@
 import React from 'react';
-import InfoTable from './InfoTable/InfoTable';
 import Coffee from '../../assets/images/coffee.png';
 import classes from './InfoContainer.css';
+import Employees from '../Employees/Employees';
+import Supplier from '../Supplier/Supplier';
 
-import Aux from '../../hoc/Auxx/Auxx';
+
 
 const infoContainer = (props) => {
 
   let main = <img src={Coffee} alt="coffee"/>;
 
-  if(props.empData && !props.adminPanelClicked){
-    main = <Aux>
-              <div className={classes.Header}>
-                <span>
-                  <p>Employees Dashboard</p>
-                  <button onClick={props.registerEmpClicked}>+ Register Employee</button>
-                </span>
-              </div>
-            <InfoTable empData={props.empData} editEmpClicked={props.editEmpClicked}/>
-             {props.children}
-          </Aux>;
+  if(props.empData && !props.adminPanelClicked && !props.supplierPanel){
+    main =<Employees
+      registerClicked={props.registerEmpClicked}
+      empData={props.empData}
+      editClicked={props.editClicked}
+      type="employee"> {props.children}</Employees>;
+
+  }
+
+  if(!props.adminPanelClicked && props.supplierPanel){
+    main = <Supplier
+      registerClicked={props.registerEmpClicked}
+      empData={props.supplierData}
+      editClicked={props.editClicked}
+      addCategoryClicked={props.addCategoryClicked}
+      type="supplier"> {props.children} </Supplier>;
 
   }
 

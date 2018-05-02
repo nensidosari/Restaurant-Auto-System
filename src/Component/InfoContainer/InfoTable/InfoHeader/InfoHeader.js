@@ -5,13 +5,10 @@ import classes from './InfoHeader.css';
 
 const infoHeader = (props) => (
   <tr className={classes.InfoHeader}>
-    <HeaderData>Name</HeaderData>
-    <HeaderData>Surname</HeaderData>
-    <HeaderData>Birthdate</HeaderData>
-    <HeaderData>Phone</HeaderData>
-    <HeaderData>Address</HeaderData>
-    <HeaderData>Type</HeaderData>
-    <HeaderData>Password</HeaderData>
+    {props.attributes.map(att => (
+      <HeaderData key={att}>{att}</HeaderData>
+    ))}
+
   </tr>
 );
 
