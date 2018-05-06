@@ -13,7 +13,11 @@ const infoTable = (props) => {
     </thead>
     <tbody>
     {props.empData.map(emp => (
-      <InfoRow type={props.type} editClicked={props.editClicked} empData={emp} key={emp.id}/>
+      <InfoRow purchaseClicked={props.purchaseClicked}
+               type={props.type}
+               editClicked={props.editClicked}
+               empData={emp}
+               key={emp.id}/>
     ))}
 
     </tbody>

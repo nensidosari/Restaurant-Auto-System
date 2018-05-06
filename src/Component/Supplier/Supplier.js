@@ -8,10 +8,6 @@ const ATTRIBUTES = [
   'Company Name',
   'Address',
   'Phone',
-  'Product',
-  'Category',
-  'Price',
-  'Purchase'
 ]
 
 const supplier = (props) => (
@@ -23,9 +19,6 @@ const supplier = (props) => (
                   <button style={{width: '220px', marginLeft: 0}} onClick={props.registerClicked}>+ Register Supplier</button>
 
                 </span>
-
-      <button style={{width: '220px', marginRight: '20px', backgroundColor: '#FFC107'}}
-              onClick={props.addCategoryClicked}>+ Add Category</button>
     </div>
 
 

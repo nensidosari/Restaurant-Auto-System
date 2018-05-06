@@ -1,37 +1,45 @@
-.SupplierEditForm {
+.ProductEditForm {
     margin: 10px auto;
     padding-left: 30px;
 }
 
-.SupplierEditForm label {
+.ProductEditForm label {
     display: block;
     font-size: larger;
 }
 
-.SupplierEditForm input{
+.ProductEditForm input{
     height: 30px;
-    width: 560px;
+    width: 280px;
 }
 
-.SupplierEditForm .LeftDiv {
+.ProductEditForm .RightDiv {
+    margin-top: 20px;
+    float: right;
+    width: 50%;
+    display: inline-block;
+}
+
+.ProductEditForm .LeftDiv {
     margin-top: 20px;
     width: 50%;
     display: block;
+    float: left;
 }
 
-.SupplierEditForm .ButtonCancel {
+.ProductEditForm .ButtonCancel {
     margin-top: 25px;
     width: 100px;
     margin-right: 35px;
     background-color: #dc3545;
 }
 
-.SupplierEditForm .ButtonCancel:hover{
+.ProductEditForm .ButtonCancel:hover{
     border: #dc3545;
     outline-color: #dc3545;
 }
 
-.SupplierEditForm .ButtonRegister {
+.ProductEditForm .ButtonRegister {
     margin-top: 25px;
     width: 100px;
     margin-right: 35px;

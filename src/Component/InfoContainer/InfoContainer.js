@@ -3,6 +3,7 @@ import Coffee from '../../assets/images/coffee.png';
 import classes from './InfoContainer.css';
 import Employees from '../Employees/Employees';
 import Supplier from '../Supplier/Supplier';
+import Products from '../Products/Products';
 
 
 
@@ -10,7 +11,7 @@ const infoContainer = (props) => {
 
   let main = <img src={Coffee} alt="coffee"/>;
 
-  if(props.empData && !props.adminPanelClicked && !props.supplierPanel){
+  if(props.empData && !props.adminPanelClicked && !props.supplierPanel && !props.productsPanel){
     main =<Employees
       registerClicked={props.registerEmpClicked}
       empData={props.empData}
@@ -19,13 +20,23 @@ const infoContainer = (props) => {
 
   }
 
-  if(!props.adminPanelClicked && props.supplierPanel){
+  if(!props.adminPanelClicked && props.supplierPanel && !props.productsPanel){
     main = <Supplier
       registerClicked={props.registerEmpClicked}
       empData={props.supplierData}
       editClicked={props.editClicked}
-      addCategoryClicked={props.addCategoryClicked}
       type="supplier"> {props.children} </Supplier>;
+
+  }
+
+  if(!props.adminPanelClicked && !props.supplierPanel && props.productsPanel){
+    main =  <Products
+      registerClicked={props.registerEmpClicked}
+      empData={props.productsData}
+      editClicked={props.editClicked}
+      addCategoryClicked={props.addCategoryClicked}
+      purchaseClicked={props.purchaseClicked}
+      type="products"> {props.children} </Products>;
 
   }
 

@@ -5,7 +5,7 @@
 
 .SupplierEditForm label {
     display: block;
-    font-size: larger;
+    font-size: xx-large;
 }
 
 .SupplierEditForm input{
@@ -13,25 +13,25 @@
     width: 560px;
 }
 
-.SupplierEditForm .LeftDiv {
+.ProductPurchase .LeftDiv {
     margin-top: 20px;
     width: 50%;
     display: block;
 }
 
-.SupplierEditForm .ButtonCancel {
+.ProductPurchase .ButtonCancel {
     margin-top: 25px;
     width: 100px;
     margin-right: 35px;
     background-color: #dc3545;
 }
 
-.SupplierEditForm .ButtonCancel:hover{
+.ProductPurchase .ButtonCancel:hover{
     border: #dc3545;
     outline-color: #dc3545;
 }
 
-.SupplierEditForm .ButtonRegister {
+.ProductPurchase .ButtonRegister {
     margin-top: 25px;
     width: 100px;
     margin-right: 35px;

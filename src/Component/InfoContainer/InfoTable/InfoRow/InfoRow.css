@@ -3,3 +3,16 @@
     border-bottom: 2px solid lightgray;
 }
 
+.InfoRow .Button {
+    margin-left: 0;
+    padding-left: 0;
+    width: 100px;
+    float: none;
+    border: none;
+    background-color: transparent;
+    color: orangered;
+    text-decoration: underline orangered;
+    height: 28px;
+    font-size: 18px;
+}
+

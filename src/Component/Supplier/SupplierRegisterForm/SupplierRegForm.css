@@ -10,21 +10,13 @@
 
 .SupplierRegForm input{
     height: 30px;
-    width: 280px;
-}
-
-.SupplierRegForm .RightDiv {
-    margin-top: 20px;
-    float: right;
-    width: 50%;
-    display: inline-block;
+    width: 560px;
 }
 
 .SupplierRegForm .LeftDiv {
     margin-top: 20px;
     width: 50%;
     display: block;
-    float: left;
 }
 
 .SupplierRegForm .ButtonCancel {

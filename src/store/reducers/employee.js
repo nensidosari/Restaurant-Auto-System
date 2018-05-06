@@ -2,6 +2,7 @@ import * as actionTypes from '../actions';
 
 const initialState = {
   employees: [],
+  editId: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +14,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         employees: updatedEmployees
+      };
+    case actionTypes.SAVE_ID :
+      console.log(action.resultPrsId);
+      return {
+        ...state,
+        editId: action.resultPrsId
       };
 
     case actionTypes.DELETE_EMPLOYEE :
