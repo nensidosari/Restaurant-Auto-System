@@ -1,0 +1,54 @@
+.CheckoutForm {
+    margin: 10px auto;
+    padding-left: 30px;
+}
+
+.CheckoutForm label {
+    font-size: 20px;
+}
+
+.CheckoutForm p {
+    font-size: 24px;
+    color: #0078D7;
+}
+
+.CheckoutForm input{
+    height: 30px;
+    width: 280px;
+}
+
+.CheckoutForm div{
+    margin-bottom: 7px;
+}
+
+.CheckoutForm .LeftDiv {
+    margin-top: 20px;
+    width: 80%;
+    display: block;
+}
+
+.CheckoutForm .ButtonCancel {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    margin-top: 10px;
+    width: 45%;
+    display: inline-block;
+    float: right;
+    border-radius: 3%;
+}
+
+.CheckoutForm .ButtonCancel:hover{
+    border: #dc3545;
+    outline-color: #dc3545;
+}
+
+.CheckoutForm .ButtonRegister {
+    background-color: #28A745;
+    border: none;
+    color: white;
+    margin-top: 10px;
+    width: 45%;
+    display: inline-block;
+    border-radius: 3%;
+}

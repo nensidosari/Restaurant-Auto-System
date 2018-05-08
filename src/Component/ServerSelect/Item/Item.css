@@ -1,0 +1,17 @@
+.Item {
+    display: inline-block;
+    background-color: orange;
+    color: white;
+    margin: 10px 10px 10px 10px;
+    height:10%;
+    width: auto;
+    text-align: center;
+    padding: 20px 40px 0 40px;
+    font-size: 26px;
+    border-radius: 10%;
+}
+
+.Item:hover {
+    cursor: pointer;
+    background-color: orangered;
+}

@@ -3,6 +3,7 @@ import RestaurantBuilder from '../RestaurantBuilder/RestaurantBuilder';
 //import {Route, Redirect, Switch,Link} from 'react-router-dom';
 import Login from '../../Component/Login/Login';
 import Admin from '../Admin/Admin';
+import Server from '../Server/Server';
 import Aux from '../../hoc/Auxx/Auxx';
 import axios from "axios/index";
 
@@ -107,7 +108,9 @@ class Layout extends Component {
           admin =  <Admin restaurantName={this.state.restaurant.name} logoutClicked={this.logoutButtonHandler}/>;
         }
         if(this.state.admin === 0){
-          server = <div> server page </div>
+          server =  <Server restaurantName={this.state.restaurant.name}
+                            tableNr={this.state.restaurant.tableNr}
+                            logoutClicked={this.logoutButtonHandler}/>;
         }
     }
 

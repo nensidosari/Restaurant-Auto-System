@@ -13,19 +13,24 @@ import SupplierEditForm from '../../Component/Supplier/SupplierEditForm/Supplier
 import ProductRegisterForm from '../../Component/Products/ProductRegisterForm/ProductRegisterForm';
 import ProductEditForm from '../../Component/Products/ProductEditForm/ProductEditForm';
 import ProductPurchase from '../../Component/Products/ProductPurchase/ProductPurchase';
+import Spinner from '../../Component/UserInterface/Spinner/Spinner';
 import Aux from '../../hoc/Auxx/Auxx';
 
 //import classes from './Admin.css';
 import axios from "axios/index";
-import * as actionTypes from "../../store/actions";
-import employee from "../../Component/Employees/Employees";
+import * as actionTypes from "../../store/actions/actionTypes";
+import * as actions from '../../store/actions/index';
+
 
 class Admin extends Component {
 
   state = {
+    location: 'Admin',
     employees: [],
     suppliers: [],
     products: [],
+    inventory: [],
+    loading: false,
     purchasing: false,
     adminPanel: true,
     supplierPanel: {
@@ -40,11 +45,14 @@ class Admin extends Component {
       show: false,
       active: false
     },
+    inventoryPanel: {
+      show: false,
+      active: false
+    },
     modal: false,
     form: false,
     edit:false,
-    category: false,
-    categories: []
+    category: false
   }
 
   componentDidMount(){
@@ -74,7 +82,8 @@ class Admin extends Component {
     this.setState({adminPanel:false,
       employerPanel: {active: true, show: true},
       supplierPanel: {active:false, show:false},
-      productsPanel:{active:false, show:false}});
+      productsPanel:{active:false, show:false},
+      inventoryPanel:{active:false, show:false}});
 
   }
 
@@ -98,31 +107,21 @@ class Admin extends Component {
     this.setState({adminPanel:false,
       supplierPanel:{active: true, show: true},
       employerPanel: {active: false, show: false},
-      productsPanel:{active:false, show:false}});
+      productsPanel:{active:false, show:false},
+      inventoryPanel:{active:false, show:false}});
   }
 
   getCategoriesHandler = () => {
-    axios.get('https://restaurant-auto-system.firebaseio.com/categories.json')
-      .then(response => {
-        const categories = [];
-        console.log(response.data);
-        for (let key in response.data ){
-          categories.push({
-            ...response.data[key],
-            id: key
-          })
-        }
-        this.setState({categories: categories, category:false});
-      }).catch(error => {
-      this.setState({error: error});
-    });
+    this.props.onGetCategories();
+    this.setState({category:false});
   }
 
   getAdminPanel = () => {
     this.setState({adminPanel:true,
       supplierPanel:{active: false, show: false},
       employerPanel: {active: false, show: false},
-      productsPanel:{active:false, show:false}
+      productsPanel:{active:false, show:false},
+      inventoryPanel:{active:false, show:false}
     });
   }
 
@@ -147,7 +146,20 @@ class Admin extends Component {
     this.setState({adminPanel:false,
       supplierPanel:{active: false, show: false},
       employerPanel: {active: false, show: false},
-      productsPanel:{active:true, show:true}
+      productsPanel:{active:true, show:true},
+      inventoryPanel:{active:false, show:false}
+    });
+  }
+
+  getInventoryHandler = () => {
+    this.getCategoriesHandler();
+    this.props.onGetInventory();
+
+    this.setState({adminPanel:false,
+      supplierPanel:{active: false, show: false},
+      employerPanel: {active: false, show: false},
+      productsPanel:{active:false, show:false},
+      inventoryPanel:{active:true, show:true}
     });
   }
 
@@ -164,14 +176,9 @@ class Admin extends Component {
   }
 
   saveCategoryHandler = (data) => {
-    axios.post('https://restaurant-auto-system.firebaseio.com/categories.json', data)
-      .then(response => {
-        this.modalCloseHandler();
-        this.getCategoriesHandler();
-        this.setState({category:false});
-      }).catch(error => {
-      this.setState({error: error, category:false});
-    });
+    this.props.onAddCategory(data);
+    this.modalCloseHandler();
+    this.setState({category:false});
   }
 
   saveEmployeeHandler = (data) => {
@@ -210,11 +217,17 @@ class Admin extends Component {
   }
 
   modalCloseHandler = () => {
-    this.setState({modal: false, form:false, edit:false, category:false});
+    this.setState({modal: false, form:false, edit:false, category:false, purchasing: false});
   }
 
   onPurchaseClicked = () => {
     this.setState({purchasing:true});
+  }
+
+  purchaseProductHandler = (data) => {
+    this.setState({loading: true});
+    this.props.onAddInventory(data);
+
   }
   render (){
 
@@ -272,7 +285,7 @@ class Admin extends Component {
 
     if(this.state.form && !this.state.edit && this.state.productsPanel.show){
       form =<ProductRegisterForm
-        categories={this.state.categories}
+        categories={this.props.categories}
         suppliers={this.state.suppliers}
         closeForm={this.modalCloseHandler}
         saveProduct={this.saveProductHandler} />
@@ -291,11 +304,15 @@ class Admin extends Component {
     }
 
     if(this.state.edit && this.state.form && this.state.productsPanel.show && this.state.purchasing){
-      form =<ProductPurchase product={product} closeForm={this.modalCloseHandler}/>
+      form =<ProductPurchase product={product} closeForm={this.modalCloseHandler} savePurchase={this.purchaseProductHandler}/>
     }
 
     if(this.state.form && this.state.productsPanel.show && this.state.category){
       form =<AddCategoryForm closeForm={this.modalCloseHandler} saveCategory={this.saveCategoryHandler} />
+    }
+
+    if(this.state.loading){
+      form=<Spinner/>
     }
 
     return(
@@ -303,24 +320,30 @@ class Admin extends Component {
           <Navbar
             restaurantName={this.props.restaurantName}
             logoutClicked={this.props.logoutClicked}
-            adminPanelClicked={this.getAdminPanel}/>
+            adminPanelClicked={this.getAdminPanel}
+            location={this.state.location}/>
           <SideNavbar
             employersClicked={this.getEmployersHandler}
             supplierPanelClicked={this.getSuppliersHandler}
             productsPanelClicked={this.getProductsHandler}
+            inventoryPanelClicked={this.getInventoryHandler}
             setActiveEmp={this.state.employerPanel.active}
             setActiveSupp={this.state.supplierPanel.active}
-            setActiveProducts={this.state.productsPanel.active}/>
+            setActiveInventory={this.state.inventoryPanel.active}
+            setActiveProducts={this.state.productsPanel.active}
+            location={this.state.location}/>
           <InfoContainer
             adminPanelClicked={this.state.adminPanel}
             empData={this.state.employees}
             supplierData={this.state.suppliers}
             productsData={this.state.products}
+            inventoryData={this.props.inventory}
             registerEmpClicked={this.registerEmployeeClickHandler}
             editClicked={this.editClickHandler}
             addCategoryClicked={this.addCategoryClicked}
             supplierPanel={this.state.supplierPanel.show}
             productsPanel={this.state.productsPanel.show}
+            inventoryPanel={this.state.inventoryPanel.show}
             purchaseClicked={this.onPurchaseClicked}>
             <Modal show={this.state.modal} modalClosed={this.modalCloseHandler}>
               {form}
@@ -334,7 +357,9 @@ class Admin extends Component {
 const mapStateToProps = state => {
   return {
     employee: state.emp.employees,
-    id: state.emp.editId
+    id: state.emp.editId,
+    categories: state.categories.categories,
+    inventory: state.inventory.inventory
   }
 };
 
@@ -342,6 +367,10 @@ const mapDispatchToProps = dispatch => {
   return {
     onAddEmployee: (employee) => dispatch({type: actionTypes.ADD_EMPLOYEE, personData: employee}),
     onDeleteEmployee: (id) => dispatch({type: actionTypes.DELETE_EMPLOYEE, resultPrsId: id}),
+    onGetCategories: () => dispatch(actions.getCategories()),
+    onAddCategory: (category) => dispatch(actions.addCategories(category)),
+    onGetInventory: () => dispatch(actions.getInventory()),
+    onAddInventory: (purchased) => dispatch(actions.addInventory(purchased))
   };
 };
 

@@ -2,19 +2,23 @@ import React from 'react';
 import RowData from './RowData/RowData';
 
 import classes from './InfoRow.css';
-import * as actionTypes from "../../../../store/actions";
+import * as actionTypes from "../../../../store/actions/actionTypes";
+import * as actions from '../../../../store/actions/index';
 import {connect} from "react-redux";
 
 const infoRow = (props) => {
 
   const clicked = () => {
-    console.log('clicked');
     props.editClicked();
     props.onSaveId(props.empData.id);
   }
 
+  const decreaseClicked = () => {
+    props.onDecreaseQuantity(props.empData.name);
+    props.onIncreaseInventory(props.empData.name);
+  }
+
   const purchaseClicked = () => {
-    console.log('pclicked');
     props.purchaseClicked();
     props.onSaveId(props.empData.id);
   }
@@ -57,8 +61,32 @@ const infoRow = (props) => {
         </tr>
       )
     }
-  }
 
+    case 'inventory': {
+      return (
+        <tr className={classes.InfoRow}>
+
+          <RowData>{props.empData.productName}</RowData>
+          <RowData>{props.empData.category}</RowData>
+          <RowData>{props.empData.supplier}</RowData>
+          <RowData>{props.empData.sellingPrice}</RowData>
+          <RowData>{props.empData.quantity}</RowData>
+        </tr>
+      )
+    }
+
+    case 'order': {
+      return (
+        <tr className={classes.InfoRow} onClick={decreaseClicked}>
+
+          <RowData type='order'>{props.empData.name}</RowData>
+          <RowData type='order'>{props.empData.quantity}</RowData>
+          <RowData type='order'>{props.empData.price }</RowData>
+        </tr>
+      )
+    }
+    default: return null;
+  }
 
 };
 
@@ -72,6 +100,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSaveId: (id) => dispatch({type: actionTypes.SAVE_ID, resultPrsId: id}),
+    onDecreaseQuantity: (name) => dispatch(actions.decreaseItemQuantity(name)),
+    onIncreaseInventory: (name) => dispatch(actions.increaseInventory(name))
   };
 };
 

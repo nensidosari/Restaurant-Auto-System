@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './EmpRegisterForm.css';
 import {connect} from "react-redux";
-import * as actionTypes from "../../../store/actions";
+import * as actionTypes from "../../../store/actions/actionTypes";
 
 const empRegisterForm = (props) => {
 

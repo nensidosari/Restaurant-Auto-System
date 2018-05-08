@@ -1,0 +1,47 @@
+.Order {
+    background-color: white;
+    padding: 15px 15px 1% 15px;
+    margin-left: 70.5%;
+    margin-bottom: 70px;
+    position: absolute;
+    color: black;
+    height: 85.3%;
+    width: 27%;
+    border-radius: 10px;
+    border: 2px solid #0078D7;
+    overflow-y: hidden;
+}
+
+.Order p {
+    color: #0078D7;
+    font-size: 25px;
+    display: block;
+    text-align: center;
+    margin: 0 30px 15px 0;
+}
+
+.Order label {
+    font-size: 18px;
+}
+
+
+.Order .ButtonCancel {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    margin-top: 10px;
+    width: 45%;
+    display: inline-block;
+    float: right;
+    border-radius: 5%;
+}
+
+.Order .ButtonRegister {
+    background-color: #28A745;
+    border: none;
+    color: white;
+    margin-top: 10px;
+    width: 45%;
+    display: inline-block;
+    border-radius: 5%;
+}

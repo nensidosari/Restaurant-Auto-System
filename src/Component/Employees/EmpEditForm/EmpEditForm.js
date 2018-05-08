@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classes from './EmpEditForm.css';
-import * as actionTypes from "../../../store/actions";
+import * as actionTypes from "../../../store/actions/actionTypes";
 import {connect} from "react-redux";
 
 const empEditForm = (props) => {

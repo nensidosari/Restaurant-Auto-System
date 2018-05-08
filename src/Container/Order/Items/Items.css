@@ -1,0 +1,15 @@
+.Items {
+    background-color: rgba(164, 209, 223, 0.31);
+    width: 100%;
+    height: 64%;
+    border-radius: 2%;
+    margin: 12px 0 12px 0;
+    overflow-y: auto;
+}
+
+.Items .InfoTable {
+    border-radius: 10px 10px 0 0;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    width:100%;
+}

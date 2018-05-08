@@ -9,7 +9,7 @@ import classes from './Navbar.css';
 const navbar = (props) => (
   <div className={classes.Navbar}>
     <Logo restaurantName={props.restaurantName}/>
-    <Panel clicked={props.adminPanelClicked}/>
+    <Panel clicked={props.adminPanelClicked || props.serverPanelClicked} location={props.location}/>
     <Settings/>
     <NavbarItem link='/' logoutClicked={props.logoutClicked}>Logout</NavbarItem>
   </div>

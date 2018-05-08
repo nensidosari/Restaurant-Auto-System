@@ -1,21 +1,24 @@
-.SupplierEditForm {
+.ProductPurchase {
     margin: 10px auto;
     padding-left: 30px;
 }
 
-.SupplierEditForm label {
-    display: block;
-    font-size: xx-large;
+.ProductPurchase label {
+    font-size: 20px;
 }
 
-.SupplierEditForm input{
+.ProductPurchase input{
     height: 30px;
-    width: 560px;
+    width: 280px;
+}
+
+.ProductPurchase div{
+    margin-bottom: 7px;
 }
 
 .ProductPurchase .LeftDiv {
     margin-top: 20px;
-    width: 50%;
+    width: 80%;
     display: block;
 }
 
