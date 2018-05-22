@@ -11,6 +11,10 @@
     background-color: #0078D7;
 }
 
+.Navbar >img:hover {
+    cursor: pointer;
+}
+
 @media (min-width: 500px) {
     .Navbar {
         flex-flow: row;

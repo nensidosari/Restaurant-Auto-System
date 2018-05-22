@@ -9,6 +9,7 @@ class Order extends Component {
   render() {
     let tableNr = this.props.table;
 
+
     return (
 
       <div className={classes.Order}>

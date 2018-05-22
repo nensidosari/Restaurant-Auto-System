@@ -14,6 +14,7 @@ const infoTable = (props) => {
     <tbody>
     {props.empData.map(emp => (
       <InfoRow purchaseClicked={props.purchaseClicked}
+               payEmplpoyeeClicked={props.payEmplpoyeeClicked}
                type={props.type}
                editClicked={props.editClicked}
                empData={emp}

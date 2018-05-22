@@ -61,8 +61,10 @@ export const resetOrder = () => {
 };
 
 export const saveOrder = (order) => {
+  let date = new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-' +  new Date().getFullYear();
+  let newOrder = {...order, date:date };
   return dispatch => {
-    axios.post('https://restaurant-auto-system.firebaseio.com/orders.json', order)
+    axios.post('https://restaurant-auto-system.firebaseio.com/orders.json', newOrder)
       .then(response => {
 
         dispatch(resetOrder());

@@ -6,6 +6,8 @@ import Admin from '../Admin/Admin';
 import Server from '../Server/Server';
 import Aux from '../../hoc/Auxx/Auxx';
 import axios from "axios/index";
+import {connect} from "react-redux";
+import * as actions from "../../store/actions";
 
 class Layout extends Component {
 
@@ -13,21 +15,25 @@ class Layout extends Component {
     restaurant: {
       name: '0',
       address: '0',
+      phonenr: '0',
       qkr: '0',
       tableNr: '0'
     },
     login: false,
-    loggedIn: true,
+    loggedIn: false,
     error: null,
-    admin: '0'
+    type: '0'
   }
 
   //TODO: CHANGE LOGGEDIN TO FALSE
 
 
   componentDidMount() {
+    this.props.onCheckAuth();
+
     axios.get('https://restaurant-auto-system.firebaseio.com/restaurant.json')
       .then(response => {
+        console.log(response);
         this.setState({restaurant: response.data});
 
       }).then(response => {
@@ -37,22 +43,28 @@ class Layout extends Component {
       }).catch(error => {
         this.setState({error: error});
       });
+
+    //TODO: BELOW THE REAL REQUEST
+
+    /*axios.get('http://192.168.0.114:8080/restaurant')
+      .then(response => {
+        this.setState({restaurant: response.data.restaurant});
+            console.log(response);
+      }).then(response => {
+      if(this.state.restaurant) {
+        this.setState({login: true});
+      }
+    }).catch(error => {
+      console.log(error);
+      this.setState({error: error});
+    });*/
   }
 
   checkLoginCredentials = (username, password) => {
-    let data = {
-      username: username,
-      password: password
-    }
 
-    axios.post('https://restaurant-auto-system.firebaseio.com/loginCredentials.json', data)
-      .then(response => {
-        if(response.status === 200) {
-          this.setState({login: false, loggedIn: true});
-        }
-      }).catch(error => {
-      this.setState({error: error});
-    });
+    this.props.onLogin(username,password);
+
+
 
   }
 
@@ -64,7 +76,7 @@ class Layout extends Component {
     this.setState({restaurant: data, login: true});
   }
 
-  getEmployerLoggedInType = () =>{
+  /*getEmployerLoggedInType = () =>{
     axios.get('https://restaurant-auto-system.firebaseio.com/employer.json')
       .then(response => {
         if(response.data.typeId === 1){
@@ -76,7 +88,7 @@ class Layout extends Component {
       }).catch(error => {
       this.setState({error: error});
     });
-  }
+  }*/
 
   logoutButtonHandler = () => {
     this.setState({login: true, loggedIn: false});
@@ -86,7 +98,7 @@ class Layout extends Component {
 
     let login = '';
 
-    if(this.state.login && !this.state.loggedIn){
+    if(!localStorage.getItem('uuid')){
       login = <Login
         restaurantName={this.state.restaurant.name}
         changeLogin={this.noRestaurantHandler}
@@ -102,12 +114,11 @@ class Layout extends Component {
     let admin = "";
     let server = "";
 
-    if(this.state.loggedIn){
-      this.getEmployerLoggedInType();
-        if(this.state.admin === 1){
+    if(localStorage.getItem('uuid')){
+        if(this.props.admin === 1){
           admin =  <Admin restaurantName={this.state.restaurant.name} logoutClicked={this.logoutButtonHandler}/>;
         }
-        if(this.state.admin === 0){
+        if(this.props.admin === 2){
           server =  <Server restaurantName={this.state.restaurant.name}
                             tableNr={this.state.restaurant.tableNr}
                             logoutClicked={this.logoutButtonHandler}/>;
@@ -128,4 +139,20 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+
+const mapStateToProps = state => {
+  return {
+    uuid: state.login.uuid,
+    admin: state.login.admin,
+    userId: state.login.userId,
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogin: (username,password) => dispatch(actions.login(username, password)),
+    onCheckAuth: () => dispatch(actions.checkAuthState())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

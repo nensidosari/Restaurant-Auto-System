@@ -1,0 +1,45 @@
+.CardDiv:hover {
+
+}
+.Card {
+    background-color: orange;
+    border-color: orangered;
+    color: white;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+
+}
+
+.Card:hover {
+    cursor: pointer;
+    background-color: orangered;
+}
+
+.Img {
+    width: 85px;
+    height: 85px;
+    margin: 25px 20px 0 70px;
+}
+
+.CardText {
+    align-items: center;
+    position: center;
+    align-self: center;
+}
+
+.CardText > img {
+    width: 85px;
+    height: 85px;
+    margin: 25px 20px 0 70px;
+
+}
+
+.CardTitle {
+    margin: 0 0 0 35%;
+    padding-top: 10px;
+    font-size: 28px;
+}
+
+

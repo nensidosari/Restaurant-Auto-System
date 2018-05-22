@@ -12,13 +12,15 @@ import categoriesReducer from './store/reducers/categories';
 import inventoryReducer from './store/reducers/inventory';
 import loadingReducer from './store/reducers/loading';
 import orderReducer from  './store/reducers/order';
+import loginReducer from  './store/reducers/login';
 
 const rootReducer = combineReducers({
   emp: employerReducer,
   categories: categoriesReducer,
   inventory: inventoryReducer,
   loading: loadingReducer,
-  order: orderReducer
+  order: orderReducer,
+  login: loginReducer
 
 });
 

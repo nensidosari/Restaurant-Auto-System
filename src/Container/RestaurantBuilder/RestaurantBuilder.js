@@ -40,10 +40,13 @@ class RestaurantBuilder extends Component {
     //this.setState({restaurant: { picQKR: info[0],qkr: info, address: info.addr, tableNr: number}});
     let data = {
       name: this.state.restaurant.name,
+      phonenr: info[0],
       address: info[1],
       qkr: info[2],
-      tableNr: info[3]
-    }
+      tableNr: parseInt(info[3])
+    };
+
+    console.log(data);
 
     this.setState({restaurant: data});
 
@@ -55,19 +58,33 @@ class RestaurantBuilder extends Component {
         this.setState({error: error});
       });
 
+    //TODO: THIS IS THE REAL REQUEST
+    /*axios.post('http://192.168.0.114:8080/createRestaurant', data)
+      .then(response => {
+          console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({error: error});
+      });*/
+
     this.changeState(3);
 
   }
 
   adminInfoSavingHandler = (...info) => {
 
+    const date = new Date();
+    const fullDate = date.getFullYear() + '-' + date.getMonth()+1 + '-' + date.getDate();
     let data = {
       name: info[0],
       surname: info[1],
       phone: info[2],
       address: info[3],
       birthdate: info[4],
-      password: info[5]
+      password: info[5],
+      hiredate: fullDate,
+      type:1
     }
 
     this.setState({admin: data});
@@ -80,6 +97,16 @@ class RestaurantBuilder extends Component {
       .catch(error => {
         this.setState({error: error});
       });
+
+    //TODO: UNCOMMENT THIS
+   /* axios.post('http://192.168.0.114:8080/firstAdmin', data)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({error: error});
+      });*/
 
     this.changeState(null);
   }

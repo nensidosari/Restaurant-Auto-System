@@ -12,8 +12,12 @@ const sideNavbar = (props) => {
               <SideNavItem clicked={props.supplierPanelClicked} active={props.setActiveSupp}>Suppliers</SideNavItem>
               <SideNavItem clicked={props.productsPanelClicked} active={props.setActiveProducts}>Products</SideNavItem>
               <SideNavItem clicked={props.inventoryPanelClicked} active={props.setActiveInventory}>Inventory</SideNavItem>
-              <SideNavItem>Orders</SideNavItem>
-              <SideNavItem>Cash Flows</SideNavItem>
+              <SideNavItem clicked={props.billsPanelClicked} active={props.setActiveBills}>Orders</SideNavItem>
+              <SideNavItem clicked={props.timeClockPanelClicked} active={props.setActiveTimeClock} >Employee Time Clock</SideNavItem>
+              <SideNavItem clicked={props.toBePaidClicked} active={props.setActiveToBePaid}>To Be Paid</SideNavItem>
+              <SideNavItem clicked={props.paidEmployeesClicked} active={props.setActivePaidEmployees}>Paid Employees</SideNavItem>
+              <SideNavItem clicked={props.currentCashFlowClicked} active={props.setActiveCurrentCashFlow} >Current Cash Flows</SideNavItem>
+              <SideNavItem clicked={props.allCashFlowsClicked} active={props.setActiveAllCashFlows}>All Cash Flows</SideNavItem>
             </div>
           );
       case 'Server':

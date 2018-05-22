@@ -19,3 +19,9 @@ export const ADD_ITEM_ORDER = 'ADD_ITEM_ORDER';
 export const DECREASE_ITEM_QUANTITY = 'DECREASE_ITEM_QUANTITY';
 export const RESET_ORDER = 'RESET_ORDER';
 export const SAVE_ORDER = 'SAVE_ORDER';
+
+export const LOGIN_START = 'LOGIN_START';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT = 'LOGOUT';
+export const CHECK_AUTH_STATE = 'CHECK_AUTH_STATE';

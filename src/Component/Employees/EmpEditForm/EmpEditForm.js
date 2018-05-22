@@ -53,6 +53,12 @@ const empEditForm = (props) => {
                  name="type" placeholder="1 for admin or 2 for server"/>
         </div>
         <div>
+          <label>Wage</label>
+          <input type="number" ref={c => this.wage = c} onChange={inputChangedHandler}
+                 value={props.employees[7]}
+                 name="wage" placeholder="Enter the hourly wage of the employee"/>
+        </div>
+        <div>
           <button onClick={props.closeForm} className={classes.ButtonCancel}>Delete</button>
           <button className={classes.ButtonRegister}>Edit</button>
         </div>

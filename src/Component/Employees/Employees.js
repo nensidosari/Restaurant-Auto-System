@@ -11,7 +11,8 @@ const ATTRIBUTES = [
   'Phone',
   'Address',
   'Type',
-  'Password'
+  'Password',
+  'Wage'
 ]
 
 const employee = (props) => (

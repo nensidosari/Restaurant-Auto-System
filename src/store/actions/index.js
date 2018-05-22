@@ -23,3 +23,9 @@ export {
   resetOrder,
   saveOrder
 } from './order';
+
+export {
+  login,
+  logout,
+  checkAuthState
+} from './login';

@@ -4,5 +4,15 @@
 }
 
 .RowDataOrder {
-    width: 300px;
+    width: 330px;
 }
+
+.RowDataToBePaid {
+    width: 175px;
+    text-align: center;
+}
+
+.RowDataTimeClock {
+     width: 100px;
+     position: center;
+ }

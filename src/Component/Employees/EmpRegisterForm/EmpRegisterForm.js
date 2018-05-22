@@ -14,7 +14,8 @@ const empRegisterForm = (props) => {
       address: this.address.value,
       birthdate: this.date.value,
       password: this.password.value,
-      type: this.type.value
+      type: this.type.value,
+      wage: this.wage.value
     }
 
     props.onAddEmployee(data);
@@ -56,6 +57,11 @@ const empRegisterForm = (props) => {
           <label>Type</label>
           <input type="number" ref={c => this.type = c}
                  name="type" placeholder="1 for admin or 2 for server"/>
+        </div>
+        <div>
+          <label>Wage</label>
+          <input type="number" ref={c => this.wage = c}
+                 name="wage" placeholder="Enter the hourly wage of the employee"/>
         </div>
         <div>
           <button onClick={props.closeForm} className={classes.ButtonCancel}>Cancel</button>

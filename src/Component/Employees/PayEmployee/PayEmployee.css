@@ -1,0 +1,42 @@
+.PayEmployee {
+    margin: 10px auto;
+    padding-left: 30px;
+}
+
+.PayEmployee label {
+    font-size: 20px;
+}
+
+.PayEmployee input{
+    height: 30px;
+    width: 280px;
+    font-size: 16px;
+}
+
+.PayEmployee div{
+    margin-bottom: 7px;
+}
+
+.PayEmployee .LeftDiv {
+    margin-top: 20px;
+    width: 80%;
+    display: block;
+}
+
+.PayEmployee .ButtonCancel {
+    margin-top: 25px;
+    width: 100px;
+    margin-right: 35px;
+    background-color: #dc3545;
+}
+
+.PayEmployee .ButtonCancel:hover{
+    border: #dc3545;
+    outline-color: #dc3545;
+}
+
+.PayEmployee .ButtonRegister {
+    margin-top: 25px;
+    width: 100px;
+    margin-right: 35px;
+}

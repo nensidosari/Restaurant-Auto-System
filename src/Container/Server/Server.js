@@ -11,6 +11,9 @@ import Modal from '../../Component/UserInterface/Modal/Modal';
 import Spinner from '../../Component/UserInterface/Spinner/Spinner';
 import Aux from '../../hoc/Auxx/Auxx';
 import * as actions from "../../store/actions";
+import axios from "axios/index";
+import {resetOrder} from "../../store/actions/order";
+
 
 //import classes from './Server.css';
 
@@ -26,22 +29,123 @@ class Server extends Component {
       active: true
     },
     serverPanel: false,
+    viewBills: false,
     location: 'Server',
+    clockedIn: false,
+    allBills: []
   };
 
   componentDidMount(){
     this.props.onGetInventory();
     this.props.onGetCategories();
+   // this.isClockedInHandler();
+
+    if(!this.state.clockedIn){
+      this.forceClockIn();
+    }
+  }
+
+  isClockedInHandler = () => {
+
+  /*  const uuid = localStorage.getItem('uuid');
+       let auth = {
+         headers: {'authorization': uuid }
+       };
+
+     axios.get('http://192.168.0.114:8080/.....', auth)
+       .then(response => {
+         if(response.status === 200) {
+           this.setState({clockedIn: true});
+         }else {
+           this.setState({clockedIn: false});
+           this.forceClockIn();
+         }
+       }).catch(error => {
+         console.log(error);
+     });*/
+
+
+  };
+
+  clockInHandler = () => {
+    this.setState({clockedIn: true});
+
+    axios.post('https://restaurant-auto-system.firebaseio.com/clockIn.json', {clockedIn: true})
+      .then(response => {
+
+      }).catch(error => {
+      this.setState({error: error});
+    });
+
+    /*const uuid = localStorage.getItem('uuid');
+    let auth = {
+      headers: {'authorization': uuid }
+    };
+
+    axios.post('http://192.168.0.114:8080/clockIn',null, auth)
+      .then(response => {
+        this.isClockedInHandler();
+      }).catch(error => {
+      console.log(error);
+    });*/
+  };
+
+  clockOutHandler = () =>{
+    this.setState({clockedIn: false});
+
+    axios.post('https://restaurant-auto-system.firebaseio.com/clockOut.json', {clockedIn: false})
+      .then(response => {
+
+      }).catch(error => {
+      this.setState({error: error});
+    });
+
+   /* const uuid = localStorage.getItem('uuid');
+    let auth = {
+      headers: {'authorization': uuid }
+    };
+
+    axios.post('http://192.168.0.114:8080/clockOut',null, auth)
+      .then(response => {
+        this.isClockedInHandler();
+      }).catch(error => {
+      console.log(error);
+    });*/
+  }
+
+  forceClockIn = () => {
+    this.setState({viewBills: false,serverPanel: true, tables: {show: false, active: false}});
+  }
+
+  viewBillsClicked = () => {
+    axios.get('https://restaurant-auto-system.firebaseio.com/orders.json')
+      .then(response => {
+        let bills = [];
+        let counter = 1;
+        console.log('data',response.data);
+        for (let key in response.data ){
+          bills.push({
+            ...response.data[key],
+            id: counter
+          })
+          counter++;
+        }
+        this.setState({viewBills: true, allBills: bills, serverPanel: false, tables: {show: false, active: false}});
+      }).catch(error => {
+      console.log(error);
+    });
+
+
   }
 
   serverPanelClicked = () => {
-    this.setState({serverPanel: true, tables: {show: false, active: false}});
+    this.setState({viewBills: false, serverPanel: true, tables: {show: false, active: false}});
     this.props.onSelectCategory('');
   }
 
   onTablesClicked = () => {
 
-    this.setState({tables: {show: true, active: true}, serverPanel: false});
+    this.setState({tables: {show: true, active: true}, serverPanel: false, viewBills: false});
     this.props.onSelectCategory('');
   }
 
@@ -57,7 +161,7 @@ class Server extends Component {
 
   othersClickedHandler = (name) => {
     this.props.onSelectCategory(name);
-    this.setState({tables: {show: false, active: false}, serverPanel: false});
+    this.setState({tables: {show: false, active: false}, serverPanel: false, viewBills: false});
   };
 
   checkoutClickedHandler = () => {
@@ -76,6 +180,10 @@ class Server extends Component {
 
   saveOrderHandler = () => {
     this.props.onSaveOrder(this.props.order);
+  }
+
+  viewBillClicked = () => {
+
   }
 
 
@@ -107,9 +215,17 @@ class Server extends Component {
       form=<Spinner/>
     }
 
-    let container =  <InfoContainer location={this.state.location}/>
+    let container =  <InfoContainer
+                        status={this.state.clockedIn}
+                        clockedIn={this.clockInHandler}
+                        clockedOut={this.clockOutHandler}
+                        viewBills={this.state.viewBills}
+                        empData={this.state.allBills}
+                        editClicked={this.viewBillClicked}
+                        location={this.state.location}/>;
 
-    if(!this.state.serverPanel){
+
+    if(!this.state.serverPanel && this.state.clockedIn && !this.state.viewBills){
       container = (
         <Aux>
           <ServerSelect
@@ -130,6 +246,7 @@ class Server extends Component {
         <Navbar
           restaurantName={this.props.restaurantName}
           logoutClicked={this.props.logoutClicked}
+          viewBillsClicked={this.viewBillsClicked}
           serverPanelClicked={this.serverPanelClicked}
           location={this.state.location}/>
         <SideNavbar

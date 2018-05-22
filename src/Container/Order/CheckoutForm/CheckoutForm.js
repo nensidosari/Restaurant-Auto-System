@@ -14,6 +14,7 @@ class checkoutForm extends Component {
 )
 
   render() {
+    let noTaxPrice = this.props.totalPrice*0.8;
 
     return (
       <form className={classes.CheckoutForm}>
@@ -32,7 +33,14 @@ class checkoutForm extends Component {
             <label>Total Price :</label>
             <label style={{color: 'red'}}>   {this.props.totalPrice} Lek</label>
           </div>
-
+          <div>
+            <label style={{fontSize: '16px'}}>Tax : </label>
+            <label style={{fontSize: '16px'}}> 20% </label>
+          </div>
+          <div>
+            <label style={{fontSize: '16px'}}>Price Without Tax : </label>
+            <label style={{fontSize: '16px'}}> {noTaxPrice} </label>
+          </div>
           <div>
             <button onClick={this.closeClicked} className={classes.ButtonCancel}>Cancel</button>
             <button className={classes.ButtonRegister} onClick={this.saveClicked}>Proceed</button>
